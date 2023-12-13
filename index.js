@@ -6,23 +6,10 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 require("dotenv").config();
 
-const { Pool } = require('pg');
+// Import PostgreSQL Middleware
+const { PostgreSQL } = require('./db/db.js');
 
 PORT = process.env.PORT || 3000;
-
-// Create a PostgreSQL pool for database connections
-const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'postgres',
-    password: '123',
-    port: 5432,
-  });
-
-const PostgreSQL = (req, res, next) => {
-    req.pool = pool;
-    next();
-}
 
 // Logger
 app.use(morgan('dev'));
