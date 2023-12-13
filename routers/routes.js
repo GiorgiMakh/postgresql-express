@@ -14,14 +14,14 @@ router.get('/users', async (req, res) => {
   
 // Route to insert data into the database
 router.post('/users', async (req, res) => {
-    const { name, email } = req.body;
+    const { name, lastname } = req.body;
   
-    if (!name || !email) {
-      return res.status(400).send('Name and email are required');
+    if (!name || !lastname) {
+      return res.status(401).send('Name and lastname are required');
     }
   
     try {
-      const result = await req.pool.query('INSERT INTO users (name, email) VALUES ($1, $2) RETURNING *', [name, email]);
+      const result = await req.pool.query('INSERT INTO users (name, lastname) VALUES ($1, $2) RETURNING *', [name, lastname]);
       res.json(result.rows[0]);
     } catch (error) {
       console.error(error);

@@ -12,12 +12,17 @@ PORT = process.env.PORT || 3000;
 
 // Create a PostgreSQL pool for database connections
 const pool = new Pool({
-    user: 'your-postgres-username',
-    host: 'your-postgres-host',
-    database: 'your-database-name',
-    password: 'your-postgres-password',
+    user: 'postgres',
+    host: 'localhost',
+    database: 'postgres',
+    password: '123',
     port: 5432,
   });
+
+const PostgreSQL = (req, res, next) => {
+    req.pool = pool;
+    next();
+}
 
 // Logger
 app.use(morgan('dev'));
@@ -32,10 +37,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 // Middleware to make the PostgreSQL pool accessible in request handlers
-app.use((req, res, next) => {
-    req.pool = pool;
-    next();
-});
+app.use(PostgreSQL);
 
 // Importing Routes
 app.use('/api/', require('./routers/routes'));
