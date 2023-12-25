@@ -11,8 +11,8 @@ describe('Testing Route /api/users', () => {
 
     test('Should add new user', async () => {
       const data = {
-        name:'Giorgi',
-        lastname:'Jest'
+        name:'Name',
+        lastname:'Lastname'
       }
   
       const response = await request(app)
