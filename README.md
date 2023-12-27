@@ -34,7 +34,7 @@ Make sure you have the following installed:
    Run seeder with:
 
    ```bash
-   npm seed
+   npm run seed
    ```
 
 Run the server:
