@@ -23,7 +23,7 @@
     "supertest": "^6.3.3"
   },
   "author": "@GiorgiMakh",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GiorgiMakh/postgresql-express.git"
